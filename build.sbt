@@ -55,7 +55,10 @@ lazy val autoImportSettings = Seq(
 
 lazy val dependencies = Seq(
   libraryDependencies ++= Seq(
-    // main dependencies
+    org.typelevel.`cats-core`,
+    org.typelevel.`cats-effect`,
+    org.http4s.`http4s-dsl`,
+    org.http4s.`http4s-core`,
   ),
   libraryDependencies ++= Seq(
     com.eed3si9n.expecty.expecty,

@@ -30,6 +30,17 @@ object Dependencies {
     object typelevel {
       val `discipline-munit` =
         "org.typelevel" %% "discipline-munit" % "1.0.9"
+      val `cats-core` =
+        "org.typelevel" %% "cats-core" % "2.10.0"
+      val `cats-effect` =
+        "org.typelevel" %% "cats-effect" % "3.5.3"
+    }
+
+    object http4s {
+      val `http4s-dsl` =
+        "org.http4s" %% "http4s-dsl" % "0.23.25"
+      val `http4s-core` =
+        "org.http4s" %% "http4s-core" % "0.23.25"
     }
   }
 }
