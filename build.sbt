@@ -59,6 +59,7 @@ lazy val dependencies = Seq(
     org.typelevel.`cats-effect`,
     org.http4s.`http4s-dsl`,
     org.http4s.`http4s-core`,
+    is.cir.ciris,
   ),
   libraryDependencies ++= Seq(
     com.eed3si9n.expecty.expecty,
@@ -66,5 +67,6 @@ lazy val dependencies = Seq(
     org.scalameta.`munit-scalacheck`,
     org.scalameta.munit,
     org.typelevel.`discipline-munit`,
+    org.typelevel.`munit-cats-effect`,
   ).map(_ % Test),
 )

@@ -1,6 +1,22 @@
 import sbt._
 
 object Dependencies {
+  object io {
+    object circe {
+      val `circe-core` =
+        "io.circe" %% "circe-core" % "0.14.1"
+      val `circe-generic` =
+        "io.circe" %% "circe-generic" % "0.14.1"
+      val `circe-parser` =
+        "io.circe" %% "circe-parser" % "0.14.1"
+    }
+  }
+  object is {
+    object cir {
+      val ciris =
+        "is.cir" %% "ciris" % "3.5.0"
+    }
+  }
   object com {
     object eed3si9n {
       object expecty {
@@ -34,13 +50,22 @@ object Dependencies {
         "org.typelevel" %% "cats-core" % "2.10.0"
       val `cats-effect` =
         "org.typelevel" %% "cats-effect" % "3.5.3"
+      val `munit-cats-effect` =
+        "org.typelevel" %% "munit-cats-effect" % "2.0.0-M4"
     }
 
     object http4s {
+      val https4version = "0.23.25"
       val `http4s-dsl` =
-        "org.http4s" %% "http4s-dsl" % "0.23.25"
+        "org.http4s" %% "http4s-dsl" % https4version
       val `http4s-core` =
-        "org.http4s" %% "http4s-core" % "0.23.25"
+        "org.http4s" %% "http4s-core" % https4version
+      val `http4s-blaze-server` =
+        "org.http4s" %% "http4s-blaze-server" % https4version
+      val `http4s-blaze-client` =
+        "org.http4s" %% "http4s-blaze-client" % https4version
+      val `http4s-circe` =
+        "org.http4s" %% "http4s-circe" % https4version
     }
   }
 }
