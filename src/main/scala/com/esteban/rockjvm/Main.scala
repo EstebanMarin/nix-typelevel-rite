@@ -17,6 +17,7 @@ import org.http4s.implicits.*
 import org.http4s.server.*
 import org.http4s.ember.server.EmberServerBuilder
 import java.util.UUID
+import org.typelevel.ci.CIString
 
 /*
  1 - add health endpoint
