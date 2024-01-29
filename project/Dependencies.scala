@@ -1,7 +1,7 @@
 import sbt._
 
 object Dependencies {
-  object io {
+  object iocirce {
     object circe {
       val `circe-core` =
         "io.circe" %% "circe-core" % "0.14.1"
@@ -9,6 +9,8 @@ object Dependencies {
         "io.circe" %% "circe-generic" % "0.14.1"
       val `circe-parser` =
         "io.circe" %% "circe-parser" % "0.14.1"
+      val `circe-literal` =
+        "io.circe" %% "circe-literal" % "0.14.6"
     }
   }
   object is {
@@ -60,10 +62,14 @@ object Dependencies {
         "org.http4s" %% "http4s-dsl" % https4version
       val `http4s-core` =
         "org.http4s" %% "http4s-core" % https4version
-      val `http4s-blaze-server` =
-        "org.http4s" %% "http4s-blaze-server" % https4version
-      val `http4s-blaze-client` =
-        "org.http4s" %% "http4s-blaze-client" % https4version
+      val `htt4s-server` =
+        "org.http4s" %% "http4s-server" % https4version
+      val `http4s-client` =
+        "org.http4s" %% "http4s-client" % https4version
+      val `http4s-ember-server` =
+        "org.http4s" %% "http4s-ember-server" % https4version
+      val `http4s-ember-client` =
+        "org.http4s" %% "http4s-ember-client" % https4version
       val `http4s-circe` =
         "org.http4s" %% "http4s-circe" % https4version
     }
