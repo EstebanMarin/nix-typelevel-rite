@@ -15,6 +15,8 @@ import org.http4s.dsl.*
 import org.http4s.dsl.impl.*
 import org.http4s.implicits.*
 import org.http4s.server.*
+import org.http4s.ember.server.EmberServerBuilder
+import java.util.UUID
 
 /*
  1 - add health endpoint
