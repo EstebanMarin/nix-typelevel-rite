@@ -17,7 +17,11 @@ import org.http4s.implicits.*
 import org.http4s.server.*
 import org.http4s.ember.server.EmberServerBuilder
 import java.util.UUID
+import org.http4s.dsl.io.*
 import org.typelevel.ci.CIString
+import com.comcast.ip4s.{ Host as ComHost, Port as ComPort }
+import com.esteban.rockjvm.config.Config
+import fs2.compression.DeflateParams.Level.FIVE
 
 /*
  1 - add health endpoint
@@ -26,9 +30,14 @@ import org.typelevel.ci.CIString
  4 - basic http server layout
  */
 
-@main def Main(args: String*): Unit =
-  println("─" * 100)
+object MainApp extends IOApp.Simple:
+  // def healthEndpoint[F[_]: Monad] = HttpRoutes.of[F]:
+  //   val dsl = Http4sDsl[F]
+  //   import dsl.*
 
-  println("hello world")
+  //   case GET -> Root / "health" =>
+  //     Ok("I'm alive!")
 
-  println("─" * 100)
+  // val httpApp = healthEndpoint[IO].orNotFound
+  def run: IO[Unit] =
+    IO.println("Hello, world!")
