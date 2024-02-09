@@ -15,8 +15,11 @@ object Dependencies {
   }
   object is {
     object cir {
+      val cirisVersion = "3.5.0"
       val ciris =
-        "is.cir" %% "ciris" % "3.5.0"
+        "is.cir" %% "ciris" % cirisVersion
+      val `ciris-htt4s` =
+        "is.cir" %% "ciris-http4s" % cirisVersion
     }
   }
   object com {

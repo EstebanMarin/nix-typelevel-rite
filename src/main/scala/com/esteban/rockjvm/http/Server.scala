@@ -2,7 +2,7 @@ package com.esteban.rockjvm.http
 
 package com.example.http4s.ember
 
-import _root_.org.http4s.ember.server.EmberServerBuilder
+import org.http4s.ember.server.EmberServerBuilder
 import cats.effect.*
 import fs2.*
 import org.http4s.*
