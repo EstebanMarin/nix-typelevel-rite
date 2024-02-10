@@ -15,7 +15,7 @@ import com.esteban.rockjvm.config.Config
 
 object MainApp extends IOApp.Simple:
   def run: IO[Unit] =
-    (for
+    for
       config <- Config.make[IO].serviceConfig
-      server = ServerService.make[IO](config).server
-    yield server.use(_ => IO.never)).void
+      server <- ServerService.make[IO](config).server.use(_ => IO.never)
+    yield server

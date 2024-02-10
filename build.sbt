@@ -66,7 +66,7 @@ lazy val dependencies = Seq(
     org.http4s.`http4s-ember-server`,
     org.http4s.`http4s-ember-client`,
     is.cir.ciris,
-    is.cir.`ciris-http4s`,
+    is.cir.`ciris-htt4s`,
     iocirce.circe.`circe-core`,
     iocirce.circe.`circe-generic`,
     iocirce.circe.`circe-parser`,
