@@ -19,7 +19,20 @@ object MainApp extends IOApp.Simple:
       Stream.bracket(IO(Config.make[IO]))(_ => IO.unit)
     val dbStream: Stream[IO, JobRepository[IO]] =
       Stream.bracket(IO(JobRepository.make[IO]))(_ => IO.unit)
+    val serverStream = Stream.bracket(IO(HttpService.make[IO]))(_ => IO.unit)
     ???
+
+    val appScafolding =
+      for config: Config[IO] <- configStream
+      yield ???
+    // configStream
+    //   .zip(dbStream)
+    //   .zip(serverStream)
+    //   .map { case ((config, jobRepo), server) =>
+    //     server.server.use(_ => IO.never)
+    //   }
+    //   .compile
+    //   .drain
 
     for
       config: ServerConfig <- Config.make[IO].serviceConfig
