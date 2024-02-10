@@ -4,6 +4,7 @@ package rockjvm
 import cats.*
 import cats.effect.*
 import com.esteban.rockjvm.http.com.example.http4s.ember.ServerService
+import com.esteban.rockjvm.config.Config
 
 /*
  1 - add health endpoint
@@ -14,4 +15,7 @@ import com.esteban.rockjvm.http.com.example.http4s.ember.ServerService
 
 object MainApp extends IOApp.Simple:
   def run: IO[Unit] =
-    ServerService.make[IO].server.use(_ => IO.never)
+    (for
+      config <- Config.make[IO].serviceConfig
+      server = ServerService.make[IO](config).server
+    yield server.use(_ => IO.never)).void
