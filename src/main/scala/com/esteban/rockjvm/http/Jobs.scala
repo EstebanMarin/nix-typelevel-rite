@@ -7,7 +7,7 @@ import org.http4s.HttpRoutes
 import org.http4s.server.Router
 import cats.effect.kernel.Async
 
-class JobsRoutes[F[_]: Async] private extends Http4sDsl[F]:
+class JobsRoutes[F[_]: Async] extends Http4sDsl[F]:
   private val allJobs = HttpRoutes.of[F]:
     case POST -> Root =>
       Ok("TODO")

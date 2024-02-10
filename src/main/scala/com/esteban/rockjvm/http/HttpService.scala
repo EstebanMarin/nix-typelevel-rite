@@ -5,7 +5,6 @@ package com.example.http4s.ember
 import org.http4s.ember.server.EmberServerBuilder
 import cats.effect.*
 import cats.*
-import cats.syntax.all.*
 import fs2.*
 import org.http4s.*
 import org.http4s.dsl.Http4sDsl
@@ -18,7 +17,7 @@ trait HttpService[F[_]] extends Http4sDsl[F]:
 
 object HttpService:
   def make[F[_]: Async](ServerConfig: ServerConfig): HttpService[F] = new HttpService[F]:
-    val allRoutes = HealthAPI[F].healthRouter <+> JobsRoutes[F].serviceRouter
+    val allRoutes = AllRoutes[F].allRoutes
     val server: Resource[F, Server] = EmberServerBuilder
       .default[F]
       .withHost(ServerConfig.host)
