@@ -3,12 +3,9 @@ package com.esteban.rockjvm.database
 import cats.effect.*
 import cats.effect.kernel.Async
 import cats.*
-import cats.implicits.*
-import cats.syntax.all.*
 import doobie.*
 import doobie.implicits.*
 import doobie.util.transactor.Transactor
-import fs2.{ Stream, text }
 
 trait JobRepository[F[_]]:
   def readinessProve: F[String]
