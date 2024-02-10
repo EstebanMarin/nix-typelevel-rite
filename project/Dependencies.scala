@@ -22,6 +22,16 @@ object Dependencies {
         "is.cir" %% "ciris-http4s" % cirisVersion
     }
   }
+
+  object co {
+    object fs2 {
+      val fs2Version = "3.9.4"
+      val `fs2-core` =
+        "co.fs2" %% "fs2-core" % fs2Version
+      val `fs2-io` =
+        "co.fs2" %% "fs2-io" % fs2Version
+    }
+  }
   object com {
     object eed3si9n {
       object expecty {

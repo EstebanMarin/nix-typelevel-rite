@@ -73,6 +73,8 @@ lazy val dependencies = Seq(
     iocirce.circe.`circe-literal`,
     org.typolecat.`doobie-core`,
     org.typolecat.`doobie-postgres`,
+    co.fs2.`fs2-core`,
+    co.fs2.`fs2-io`,
   ),
   libraryDependencies ++= Seq(
     com.eed3si9n.expecty.expecty,

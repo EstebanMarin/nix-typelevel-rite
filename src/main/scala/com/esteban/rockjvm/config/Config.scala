@@ -9,7 +9,7 @@ import com.comcast.ip4s.*
 import com.esteban.rockjvm.model.ServerConfig
 import com.esteban.rockjvm.model.ServerConfig.given
 
-trait Config[F[_]: MonadThrow]:
+trait Config[F[_]: Async]:
   def serviceConfig: F[ServerConfig]
 
 object Config:
