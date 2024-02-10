@@ -6,11 +6,7 @@ import cats.effect.*
 import com.esteban.rockjvm.http.com.example.http4s.ember.HttpService
 import com.esteban.rockjvm.config.Config
 
-/*
- 1 - add health endpoint
- 2 - add minimal configuration
- 3 - basic http server layout
- */
+// Create readiness prove that test DB connection is working
 
 object MainApp extends IOApp.Simple:
   def run: IO[Unit] =
