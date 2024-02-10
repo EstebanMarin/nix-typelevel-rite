@@ -1,8 +1,7 @@
 package com.esteban.rockjvm.model
 
-import com.comcast.ip4s.Port
-import com.comcast.ip4s.Host
 import ciris.ConfigDecoder
+import com.comcast.ip4s.*
 
 final case class ServerConfig(port: Port, host: Host)
 

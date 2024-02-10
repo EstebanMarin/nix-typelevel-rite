@@ -47,6 +47,13 @@ object Dependencies {
       private def moduleId(artifact: String): ModuleID =
         "org.scalameta" %% artifact % "1.0.0-M10"
     }
+    object typolecat {
+      val doobieVersion = "1.0.0-RC4"
+      val `doobie-core` =
+        "org.tpolecat" %% "doobie-core" % doobieVersion
+      val `doobie-postgres` =
+        "org.tpolecat" %% "doobie-postgres" % doobieVersion
+    }
 
     object typelevel {
       val `discipline-munit` =

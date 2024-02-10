@@ -1,11 +1,11 @@
 package com.esteban.rockjvm.config
 
-import com.comcast.ip4s.{ Port, Host }
 import cats.*
+import cats.effect.kernel.Async
 import cats.implicits.*
 import ciris.*
-import ciris.env
-import cats.effect.kernel.Async
+import com.comcast.ip4s.*
+
 import com.esteban.rockjvm.model.ServerConfig
 import com.esteban.rockjvm.model.ServerConfig.given
 

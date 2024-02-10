@@ -3,8 +3,9 @@ package rockjvm
 
 import cats.*
 import cats.effect.*
-import com.esteban.rockjvm.http.com.example.http4s.ember.HttpService
+
 import com.esteban.rockjvm.config.Config
+import com.esteban.rockjvm.http.com.example.http4s.ember.HttpService
 
 // Create readiness prove that test DB connection is working
 
