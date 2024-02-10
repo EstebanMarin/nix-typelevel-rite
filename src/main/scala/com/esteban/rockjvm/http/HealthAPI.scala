@@ -13,6 +13,7 @@ class HealthAPI[F[_]: Async] extends Http4sDsl[F]:
       Ok("pong")
   val dbReadiness = HttpRoutes.of[F]:
     case GET -> Root / "postgres" =>
+      // TODO add readiness algebra
       Ok("ready")
   val healthRoutes = heathAPI <+> dbReadiness
   val healthRouter = Router("/health" -> healthRoutes)
