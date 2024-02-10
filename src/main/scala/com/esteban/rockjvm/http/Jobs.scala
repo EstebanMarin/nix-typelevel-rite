@@ -14,7 +14,7 @@ class JobsRoutes[F[_]: Async] extends Http4sDsl[F]:
 
   private val jobById = HttpRoutes.of[F]:
     case GET -> Root / UUIDVar(id) =>
-      Ok(s"TODO: get job by id $id")
+      Ok(s"TODO: $id")
 
   private val allRoute = jobById <+> allJobs
 
