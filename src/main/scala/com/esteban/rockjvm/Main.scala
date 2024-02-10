@@ -23,6 +23,9 @@ object MainApp extends IOApp.Simple:
   val appScafolding =
     configStream.map(identity).compile.drain
 
+  val test =
+    for conf: ServerConfig <- configStream
+    yield ()
   def run: IO[Unit] =
     for
       config: ServerConfig <- Config.make[IO].serviceConfig
