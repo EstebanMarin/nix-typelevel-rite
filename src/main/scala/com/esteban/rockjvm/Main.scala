@@ -3,7 +3,7 @@ package rockjvm
 
 import cats.*
 import cats.effect.*
-import com.esteban.rockjvm.http.com.example.http4s.ember.ServerService
+import com.esteban.rockjvm.http.com.example.http4s.ember.HttpService
 import com.esteban.rockjvm.config.Config
 
 /*
@@ -17,5 +17,6 @@ object MainApp extends IOApp.Simple:
   def run: IO[Unit] =
     for
       config <- Config.make[IO].serviceConfig
-      server <- ServerService.make[IO](config).server.use(_ => IO.never)
+      _ <- IO.println(s"Starting server on port ${config.port}")
+      server <- HttpService.make[IO](config).server.use(_ => IO.never)
     yield server

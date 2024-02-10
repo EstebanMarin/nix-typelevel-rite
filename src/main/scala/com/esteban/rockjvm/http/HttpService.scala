@@ -11,13 +11,13 @@ import org.http4s.implicits.*
 import org.http4s.server.Server
 import _root_.com.esteban.rockjvm.model.ServerConfig
 
-trait ServerService[F[_]]:
+trait HttpService[F[_]]:
   val dsl: Http4sDsl[F]
 
   def server: Resource[F, Server]
 
-object ServerService:
-  def make[F[_]: Async](ServerConfig: ServerConfig): ServerService[F] = new ServerService[F]:
+object HttpService:
+  def make[F[_]: Async](ServerConfig: ServerConfig): HttpService[F] = new HttpService[F]:
     val dsl = Http4sDsl[F]
     import dsl.*
     val httpApp = HttpRoutes.of[F]:
