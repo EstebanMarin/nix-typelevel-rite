@@ -1,8 +1,8 @@
 package com.esteban.rockjvm.database
 
+import cats.*
 import cats.effect.*
 import cats.effect.kernel.Async
-import cats.*
 import doobie.*
 import doobie.implicits.*
 import doobie.util.transactor.Transactor

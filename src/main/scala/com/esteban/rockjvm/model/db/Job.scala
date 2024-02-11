@@ -15,12 +15,3 @@ object Job:
 
   enum JobStatus:
     case Available, Closed, Inprogress
-
-  val emptyJobInfo: JobInfo = JobInfo(
-    id = UUID.randomUUID(),
-    name = "",
-    description = "",
-    status = JobStatus.Available,
-    createdAt = Instant.now(),
-    updatedAt = Instant.now(),
-  )

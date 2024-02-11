@@ -5,8 +5,8 @@ import cats.*
 import cats.effect.*
 
 import com.esteban.rockjvm.config.Config
-import com.esteban.rockjvm.http.com.example.http4s.ember.HttpService
 import com.esteban.rockjvm.database.JobRepository
+import com.esteban.rockjvm.http.com.example.http4s.ember.HttpService
 import com.esteban.rockjvm.model.ServerConfig
 
 object MainApp extends IOApp.Simple:
