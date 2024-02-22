@@ -16,11 +16,11 @@ object GenUUID:
     new GenUUID[F]:
       override def generate: F[UUID] = Sync[F].delay(UUID.randomUUID() match
         case uuid: UUID => uuid
-        case null => throw new IllegalStateException("UUID.randomUUID() returned null")
+        case _ => throw new IllegalStateException("UUID.randomUUID() returned null")
       )
 
       override def read(str: String): F[UUID] =
         ApplicativeThrow[F].catchNonFatal(UUID.fromString(str) match
           case uuid: UUID => uuid
-          case null => throw new IllegalArgumentException(s"Invalid UUID string: $str")
+          case _ => throw new IllegalArgumentException(s"Invalid UUID string: $str")
         )

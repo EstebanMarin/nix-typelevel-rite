@@ -19,7 +19,7 @@ object Job:
     given Meta[JobInfo] =
       val instant = Instant.now() match
         case instant: Instant => instant
-        case null => throw new IllegalStateException("Instant.now() returned null")
+        case _ => throw new IllegalStateException("Instant.now() returned null")
 
       Meta[UUID].timap(id =>
         JobInfo(id, "name", "description", JobStatus.Available, instant, instant)
@@ -28,7 +28,7 @@ object Job:
 val uuidFunction: String => UUID = str =>
   UUID.fromString(str) match
     case uuid: UUID => uuid
-    case null => throw new IllegalArgumentException(s"Invalid UUID string: $str")
+    case _ => throw new IllegalArgumentException(s"Invalid UUID string: $str")
 
 given Meta[UUID] =
   Meta[String].imap[UUID](uuidFunction)(_.toString)

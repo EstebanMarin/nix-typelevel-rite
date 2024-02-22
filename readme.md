@@ -1,26 +1,23 @@
-# Rock the JVM typelevel rite
+# Rock the JVM type-level rite
 
-code_dir = 'path_to_your_code_directory'
+code_dir = 'path
 
+```bash
+docker run -d \
+  --restart always \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=postgres \
+  -p 5432:5432 \
+  -v $(pwd)/resource/db/V001__create_jobs_info_table.sql:/db.v001.sql \
+  -v $(pwd)/resource/db/V002__w3_db.sql:/db.v002.sql \
+  postgres
+  ```
 
-# Initialize an empty string to hold the README content
+## run migration
 
-readme_content = ''
-
-# Walk through the directory
-
-for root, dirs, files in os.walk(code_dir):
-    for file in files:
-        # Check if the file has one of the desired extensions
-        if any(file.endswith(ft) for ft in file_types):
-            # Open the file and read its content
-            with open(os.path.join(root, file), 'r') as f:
-                code_content = f.read()
-
-            # Add the file name and code content to the README content
-            readme_content += f'## {file}\n```{file.split(".")[-1]}\n{code_content}\n```\n'
-
-# Write the README content to a new README file
-
-with open('README.md', 'w') as f:
-    f.write(readme_content)
+``` bash
+$> docker exec -it <container> psql -U postgres
+$> \c
+$> \i db.v001.sql
+```
