@@ -1,7 +1,5 @@
 # Rock the JVM type-level rite
 
-code_dir = 'path
-
 ```bash
 docker run -d \
   --restart always \
