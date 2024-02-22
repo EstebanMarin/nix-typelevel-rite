@@ -11,7 +11,10 @@ import org.http4s.server.Router
 class JobsRoutes[F[_]: Async: JobRepository] extends Http4sDsl[F]:
   private val allJobs = HttpRoutes.of[F]:
     case POST -> Root =>
-      Ok("TODO")
+      // for test <- summon[JobRepository[F]].allJobs
+      // yield Ok("TODO")
+      add circe here
+      Ok(summon[JobRepository[F]].allJobs.toString)
 
   private val jobById = HttpRoutes.of[F]:
     case GET -> Root / UUIDVar(id) =>

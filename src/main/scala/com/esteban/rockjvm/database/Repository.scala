@@ -11,6 +11,7 @@ import com.esteban.rockjvm.model.db.Job.*
 
 trait JobRepository[F[_]]:
   def readinessProve: F[String]
+  def allJobs: F[List[JobInfo]]
 
 object JobRepository:
   def make[F[_]: Async]: JobRepository[F] =
