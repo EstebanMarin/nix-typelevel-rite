@@ -5,6 +5,9 @@ import java.util.UUID
 
 import doobie.*
 import doobie.implicits.*
+import io.circe.Codec
+import io.circe.generic.semiauto.deriveCodec
+import com.esteban.rockjvm.model.db.Job.JobInfo
 
 object Job:
   final case class JobInfo(
@@ -16,6 +19,9 @@ object Job:
     updatedAt: Instant,
   )
   object JobInfo:
+    given Codec[JobInfo] =
+      deriveCodec[JobInfo]
+
     given Meta[JobInfo] =
       val instant = Instant.now() match
         case instant: Instant => instant

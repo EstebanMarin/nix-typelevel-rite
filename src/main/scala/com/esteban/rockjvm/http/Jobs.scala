@@ -13,8 +13,7 @@ class JobsRoutes[F[_]: Async: JobRepository] extends Http4sDsl[F]:
     case POST -> Root =>
       // for test <- summon[JobRepository[F]].allJobs
       // yield Ok("TODO")
-      add circe here
-      Ok(summon[JobRepository[F]].allJobs.toString)
+      Ok(summon[JobRepository[F]].allJobs)
 
   private val jobById = HttpRoutes.of[F]:
     case GET -> Root / UUIDVar(id) =>
