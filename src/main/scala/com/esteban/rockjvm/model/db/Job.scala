@@ -7,7 +7,6 @@ import doobie.*
 import doobie.implicits.*
 import io.circe.Codec
 import io.circe.generic.semiauto.deriveCodec
-import com.esteban.rockjvm.model.db.Job.JobInfo
 
 object Job:
   final case class JobInfo(
