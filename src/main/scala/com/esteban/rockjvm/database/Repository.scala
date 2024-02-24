@@ -28,4 +28,4 @@ object JobRepository:
         sql"select version()".query[String].unique.transact(xa)
 
       def allJobs: F[List[JobInfo]] =
-        sql"select * from jobs_info".query[JobInfo].to[List].transact(xa)
+        sql"select * from job_info".query[JobInfo].to[List].transact(xa)
