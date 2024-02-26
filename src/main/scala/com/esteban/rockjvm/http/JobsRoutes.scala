@@ -3,8 +3,8 @@ package com.esteban.rockjvm.http
 import _root_.com.esteban.rockjvm.database.JobRepository
 import _root_.com.esteban.rockjvm.model.db.Job.*
 import cats.*
+import cats.syntax.all.*
 import cats.effect.kernel.Async
-import cats.implicits.*
 import io.circe.Codec
 import io.circe.generic.semiauto.deriveCodec
 import org.http4s.*
@@ -12,8 +12,9 @@ import org.http4s.circe.CirceEntityCodec.circeEntityEncoder
 import org.http4s.circe.*
 import org.http4s.dsl.Http4sDsl
 import org.http4s.server.Router
+import org.typelevel.log4cats.Logger
 
-class JobsRoutes[F[_]: Async: JobRepository: MonadThrow] extends Http4sDsl[F]:
+class JobsRoutes[F[_]: Async: JobRepository: MonadThrow: Logger] extends Http4sDsl[F]:
   given Codec[JobInfo] =
     deriveCodec[JobInfo]
   given EntityEncoder[F, List[JobInfo]] =

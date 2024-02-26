@@ -6,8 +6,9 @@ import cats.syntax.all.*
 import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl
 import org.http4s.server.Router
+import org.typelevel.log4cats.Logger
 
-class AllRoutes[F[_]: Async: JobRepository] extends Http4sDsl[F]:
+class AllRoutes[F[_]: Async: JobRepository: Logger] extends Http4sDsl[F]:
   val healthRoutes = HealthAPI[F].healthRouter
   val jobsRoutes = JobsRoutes[F].serviceRouter
   val allRoutes = Router("/api" -> (healthRoutes <+> jobsRoutes))
