@@ -23,16 +23,28 @@ class JobsRoutes[F[_]: Async: JobRepository: MonadThrow: Logger] extends Http4sD
   given EntityEncoder[F, Option[JobInfo]] =
     jsonEncoderOf[F, Option[JobInfo]]
 
+  import _root_.com.esteban.rockjvm.logging.syntax.*
+
   private val allJobs = HttpRoutes.of[F]:
     case GET -> Root / "get-all" =>
-      Ok(summon[JobRepository[F]].allJobs)
+      for
+        _ <- Logger[F].info("Getting all jobs")
+        allJobs <- summon[JobRepository[F]].allJobs
+        resp <- Ok(allJobs)
+      yield resp
 
   private val jobById = HttpRoutes.of[F]:
     case GET -> Root / UUIDVar(id) =>
-      Ok(for repo <- summon[JobRepository[F]].getJobById(id) yield repo match
-        case Some(job) => job
-        case None => throw new Exception(s"Job with id $id not found")
-      )
+      for
+        _ <- Logger[F].info(s"Getting job with id $id")
+        job <-
+          summon[JobRepository[F]]
+            .getJobById(id)
+            .logError(e => s"ID $id not found: ${e.getMessage}")
+        res <- job match
+          case Some(job) => Ok(job)
+          case None => NotFound(s"Job with id $id not found")
+      yield res
 
   val allRoutes = jobById <+> allJobs
 

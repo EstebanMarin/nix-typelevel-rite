@@ -1,10 +1,10 @@
-package com.esteban.rockjvm.logger
+package com.esteban.rockjvm.logging
 
 import org.typelevel.log4cats.Logger
 import cats.*
 import cats.syntax.all.*
 
-object logger:
+object syntax:
   extension [F[_], E, A](
     fa: F[A]
   )(using
