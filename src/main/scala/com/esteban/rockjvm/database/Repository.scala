@@ -10,6 +10,9 @@ import doobie.util.transactor.Transactor
 import com.esteban.rockjvm.model.db.Job.*
 import java.util.UUID
 
+import doobie.postgres.*
+import doobie.postgres.implicits.*
+
 trait JobRepository[F[_]]:
   def readinessProve: F[String]
   def allJobs: F[List[JobInfo]]
@@ -32,21 +35,8 @@ object JobRepository:
       def allJobs: F[List[JobInfo]] =
         sql"select * from job_info".query[JobInfo].to[List].transact(xa)
 
-      given Meta[UUID] = ???
-      // {
-      //   Some(UUID.fromString())
-      //   UUID.fromString match
-      //     // case Some(uuid) =>         Meta[String].timap()(uuid.toString)
-      //     case Some(uuid) =>         ???
-      //     case None => throw new Exception("UUID parsing failed")
-      //   }
-
-      // Meta[String].timap()(_.toString)
-      // }
       def getJobById(id: UUID): F[Option[JobInfo]] =
-        println(s"select * from job_info where id = '${id.toString()}';")
-        // println(sql"select * from job_info where id = '${id.toString()};")
-        // sql"select * from job_info where id = ${id.toString()}"
+        println(s"select * from job_info where id = '${id}';")
         sql"select * from job_info where id = $id"
           // sql"select * from job_info where id = 'd290f1ee-6c54-4b01-90e6-d701748f0851'"
           .query[JobInfo]
